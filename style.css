@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+form {
+  max-width: 400px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label, input {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.welcome {
+  background: #007bff;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.bandiera {
+  width: 100px;
+  margin: auto;
+}
+
+.start-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: white;
+  color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}

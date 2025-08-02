@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulatore Elezioni</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <h1>Simulatore Elezioni</h1>
+  <form id="voteForm">
+    <label for="votiTotali">Totale voti:</label>
+    <input type="number" id="votiTotali" required />
+
+    <label for="votiLista1">Voti Lista 1:</label>
+    <input type="number" id="votiLista1" required />
+
+    <label for="votiLista2">Voti Lista 2:</label>
+    <input type="number" id="votiLista2" required />
+
+    <button type="submit">Calcola</button>
+  </form>
+  <div id="risultati"></div>
+</body>
+</html>
