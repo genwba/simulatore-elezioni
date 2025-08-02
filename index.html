@@ -2,26 +2,109 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Simulatore Elezioni</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
-  <script defer src="app.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    .welcome, .step {
+      display: none;
+      padding: 40px 20px;
+    }
+    .welcome.active, .step.active {
+      display: block;
+    }
+    .flag {
+      width: 60px;
+      margin-top: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      padding: 30px;
+    }
+    input, select {
+      padding: 10px;
+      margin: 8px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  </style>
 </head>
 <body>
-  <h1>Simulatore Elezioni</h1>
-  <form id="voteForm">
-    <label for="votiTotali">Totale voti:</label>
-    <input type="number" id="votiTotali" required />
 
-    <label for="votiLista1">Voti Lista 1:</label>
-    <input type="number" id="votiLista1" required />
+<div class="welcome active" id="welcome">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" class="flag" alt="Bandiera Italia">
+  <h1>Benvenuto nel Simulatore Elezioni Comunali</h1>
+  <p>Simula i risultati delle elezioni comunali passo per passo.</p>
+  <button onclick="startSimulation()">Inizia Simulazione</button>
+</div>
 
-    <label for="votiLista2">Voti Lista 2:</label>
-    <input type="number" id="votiLista2" required />
+<div class="step" id="step1">
+  <div class="container">
+    <h2>Step 1 – Inserisci dati generali</h2>
+    <input type="text" placeholder="Nome Comune" />
+    <input type="number" placeholder="Numero Abitanti" />
+    <button onclick="nextStep('step2')">Prosegui</button>
+  </div>
+</div>
 
-    <button type="submit">Calcola</button>
-  </form>
-  <div id="risultati"></div>
+<div class="step" id="step2">
+  <div class="container">
+    <h2>Step 2 – Inserisci i voti</h2>
+    <input type="number" placeholder="Totale votanti" />
+    <input type="number" placeholder="Schede bianche" />
+    <input type="number" placeholder="Schede nulle" />
+    <button onclick="nextStep('step3')">Avanti</button>
+  </div>
+</div>
+
+<div class="step" id="step3">
+  <div class="container">
+    <h2>Step 3 – Risultato Simulazione</h2>
+    <p>(Qui compariranno i risultati elaborati)</p>
+    <button onclick="restart()">Ricomincia</button>
+  </div>
+</div>
+
+<script>
+  function startSimulation() {
+    document.getElementById('welcome').classList.remove('active');
+    document.getElementById('step1').classList.add('active');
+  }
+
+  function nextStep(stepId) {
+    const current = document.querySelector('.step.active');
+    if (current) current.classList.remove('active');
+    document.getElementById(stepId).classList.add('active');
+  }
+
+  function restart() {
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+    document.getElementById('welcome').classList.add('active');
+  }
+</script>
+
 </body>
 </html>
